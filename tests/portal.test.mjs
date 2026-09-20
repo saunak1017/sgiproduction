@@ -56,8 +56,8 @@ test('authentication, all-optional project, vendor permission checks and stale e
   const create=await request('/projects',{method:'POST',cookie:admin,data:{}});assert.equal(create.status,201);
   const p=create.result.project;assert.equal(p.name,'');assert.deepEqual(p.spec.stones,[]);
   assert.equal((await request(`/projects/${p.id}`,{method:'PATCH',cookie:vendor,data:{name:'Changed',version:p.version}})).status,403);
-  const edited=await request(`/projects/${p.id}`,{method:'PATCH',cookie:admin,data:{version:p.version,name:'Emerald ring',quantity:'2 pairs',notes:'<script>unsafe()</script>',stamping:['Other'],stamping_other:'Custom logo',stones:[{shape:'Oval',weight:'1.25',quantity:'2',basis:'per_stone'}]}});
-  assert.equal(edited.status,200);assert.equal(edited.result.project.name,'Emerald ring');
+  const edited=await request(`/projects/${p.id}`,{method:'PATCH',cookie:admin,data:{version:p.version,name:'Emerald ring',quantity:'2 pairs',notes:'<script>unsafe()</script>',stamping:['Other'],stamping_other:'Custom logo',cad_modifications:'Check prongs before milling.',stones:[{shape:'Oval',weight:'1.25',quantity:'2',basis:'per_stone'}]}});
+  assert.equal(edited.status,200);assert.equal(edited.result.project.name,'Emerald ring');assert.equal(edited.result.project.spec.cad_modifications,'Check prongs before milling.');
   assert.equal((await request(`/projects/${p.id}`,{method:'PATCH',cookie:admin,data:{name:'Stale',version:p.version}})).status,409);
   assert.equal((await request('/admin/notifications',{cookie:vendor})).status,403);
   assert.ok(env.DB.db.prepare('SELECT iterations FROM users').all().every(u=>u.iterations<=100000));

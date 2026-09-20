@@ -65,8 +65,8 @@ test('blank form creates an order; invalid typed date preserves edits; edit form
   input($('#delivery-text'),'');submit($('#order-form'));await until(()=>$('#change-stage'),'Blank project failed to create');
   assert.equal(DB.db.prepare('SELECT count(*) AS n FROM projects').get().n,1);assert.match($('h1').textContent,/Untitled/);
   const link=[...w.document.querySelectorAll('a')].find(a=>a.textContent.includes('Edit project'));link.click();await until(()=>$('#order-form'));
-  input($('[name="name"]'),'Oval solitaire');input($('[name="metal"]'),'18K yellow gold');input($('[name="quantity"]'),'2 pairs');input($('[name="notes"]'),'Leave gallery open.');submit($('#order-form'));await until(()=>$('#change-stage'));
-  assert.equal($('h1').textContent,'Oval solitaire');assert.match($('#main').textContent,/18K yellow gold/);assert.match($('#main').textContent,/2 pairs/);
+  input($('[name="name"]'),'Oval solitaire');input($('[name="metal"]'),'18K yellow gold');input($('[name="quantity"]'),'2 pairs');input($('[name="notes"]'),'Leave gallery open.');input($('[name="cad_modifications"]'),'Confirm prong clearance.');submit($('#order-form'));await until(()=>$('#change-stage'));
+  assert.equal($('h1').textContent,'Oval solitaire');assert.match($('#main').textContent,/18K yellow gold/);assert.match($('#main').textContent,/2 pairs/);assert.match($('#main').textContent,/Confirm prong clearance/);assert.match($('.file-download')?.textContent||'Download',/Download/);
 });
 
 test('pickup prompt accepts optional cost; completed routing works; an unsent comment survives a stage change',async t=>{
