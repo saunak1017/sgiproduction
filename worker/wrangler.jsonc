@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "shivani-production-notifications",
+  "main": "index.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "triggers": {"crons": ["* * * * *"]},
+  "d1_databases": [{"binding":"DB","database_name":"shivani-production","database_id":"REPLACE_WITH_D1_DATABASE_ID"}],
+  "r2_buckets": [{"binding":"UPLOADS","bucket_name":"shivani-production-files"}],
+  "vars": {
+    "PORTAL_URL": "https://REPLACE_WITH_YOUR_PROJECT.pages.dev",
+    "NOTIFICATIONS_ENABLED": "false"
+  }
+}
