@@ -8,7 +8,7 @@
   "d1_databases": [{"binding":"DB","database_name":"shivani-production","database_id":"58413835-46a1-4f32-b370-d8bf65c553e1"}],
   "r2_buckets": [{"binding":"UPLOADS","bucket_name":"shivani-production-files"}],
   "vars": {
-    "NOTIFICATIONS_ENABLED": "true"
     "PORTAL_URL": "https://sgiproduction.pages.dev",
+    "NOTIFICATIONS_ENABLED": "true"
   }
 }
