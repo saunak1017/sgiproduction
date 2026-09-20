@@ -5,10 +5,10 @@
   "compatibility_date": "2026-09-01",
   "workers_dev": false,
   "triggers": {"crons": ["* * * * *"]},
-  "d1_databases": [{"binding":"DB","database_name":"shivani-production","database_id":"REPLACE_WITH_D1_DATABASE_ID"}],
+  "d1_databases": [{"binding":"DB","database_name":"shivani-production","database_id":"58413835-46a1-4f32-b370-d8bf65c553e1"}],
   "r2_buckets": [{"binding":"UPLOADS","bucket_name":"shivani-production-files"}],
   "vars": {
-    "PORTAL_URL": "https://REPLACE_WITH_YOUR_PROJECT.pages.dev",
+    "PORTAL_URL": "sgiproduction.pages.dev",
     "NOTIFICATIONS_ENABLED": "false"
   }
 }
