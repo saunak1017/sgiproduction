@@ -9,6 +9,6 @@
   "r2_buckets": [{"binding":"UPLOADS","bucket_name":"shivani-production-files"}],
   "vars": {
     "PORTAL_URL": "https://sgiproduction.pages.dev",
-    "NOTIFICATIONS_ENABLED": "false"
+    "NOTIFICATIONS_ENABLED": "true"
   }
 }
