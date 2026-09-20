@@ -7,6 +7,7 @@ export function sanitizeSpec(input) {
   const spec={};
   for(const key of ['name','cad_file_name','category','ring_size','metal','setting','quantity','stamping_other']) spec[key]=textField(input[key]);
   spec.notes=textField(input.notes,20000);
+  spec.cad_modifications=textField(input.cad_modifications,20000);
   spec.delivery_date=textField(input.delivery_date,10);
   assert(!spec.delivery_date || validDate(spec.delivery_date),400,'Enter a valid delivery date.');
   const stamps=input.stamping || [];
